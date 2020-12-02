@@ -10,6 +10,10 @@ public class DateUtil {
         return new java.sql.Date(date.getTime());
     }
 
+    public static java.util.Date sql2date(java.sql.Date date) {
+        return new java.util.Date(date.getTime());
+    }
+
     public static Date today() {
         Calendar c = Calendar.getInstance();
         c.setTime(new Date());
@@ -33,6 +37,7 @@ public class DateUtil {
         c.setTime(monthBegin());
         c.add(Calendar.MONTH, 1);
         c.add(Calendar.MILLISECOND, -1);
+
         return c.getTime();
     }
 
