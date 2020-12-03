@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
-import gui.listener.SpendPanelListener;
 import gui.panel.SpendPanel;
  
 class HutuMainFrame {

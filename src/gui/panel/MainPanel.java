@@ -1,10 +1,14 @@
 package gui.panel;
 
+import entity.Record;
+import gui.listener.ToolBarListener;
 import utils.CenterPanel;
 import utils.GUIUtil;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainPanel extends JPanel {
     static {
@@ -46,6 +50,19 @@ public class MainPanel extends JPanel {
         setLayout(new BorderLayout());
         add(tb, BorderLayout.NORTH);
         add(workingPanel, BorderLayout.CENTER);
+
+        addListener();
+    }
+
+    private void addListener() {
+        ToolBarListener tbListener = new ToolBarListener();
+        bSpend.addActionListener(tbListener);
+        bRecord.addActionListener(tbListener);
+        bCategory.addActionListener(tbListener);
+        bReport.addActionListener(tbListener);
+        bConfig.addActionListener(tbListener);
+        bBackup.addActionListener(tbListener);
+        bRecover.addActionListener(tbListener);
     }
 
     public static void main(String[] args) {

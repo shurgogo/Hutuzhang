@@ -66,9 +66,9 @@ public class GUIUtil {
     // 设置图标
     public static void setImageIcon(JButton b, String fileName, String tip) {
         ImageIcon i = new ImageIcon(new File(fileName).getAbsolutePath());
-        i.setImage(i.getImage().getScaledInstance(30, 40, Image.SCALE_DEFAULT));
+        i.setImage(i.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
         b.setIcon(i);
-        b.setPreferredSize(new Dimension(30, 65));
+        b.setPreferredSize(new Dimension(60, 80));
         b.setToolTipText(tip);
         b.setVerticalTextPosition(JButton.BOTTOM);
         b.setHorizontalTextPosition(JButton.CENTER);
