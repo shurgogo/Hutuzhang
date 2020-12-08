@@ -15,14 +15,14 @@ public class DBUtil {
 
     static {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
         }
     }
 
     public static Connection getConnection() throws SQLException {
-        String url = String.format("jdbc:mysql://%s:%d/%s?characterEncoding=%s", ip, port, database, encoding);
+        String url = String.format("jdbc:mysql://%s:%d/%s?uuseSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=%s", ip, port, database, encoding);
         return DriverManager.getConnection(url, loginName, password);
     }
 }

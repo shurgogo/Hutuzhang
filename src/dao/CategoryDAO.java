@@ -12,7 +12,7 @@ public class CategoryDAO implements DAO{
     public int getTotal() {
         int total = 0;
 
-        String sql = "select count(*) from config";
+        String sql = "select count(*) from category";
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement()) {
             ResultSet rs = s.executeQuery(sql);
             while (rs.next()) {
@@ -31,11 +31,6 @@ public class CategoryDAO implements DAO{
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, category.getName());
             ps.execute();
-            ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                int id = rs.getInt(1);
-                category.setId(id);
-            }
         } catch (SQLException SQLe) {
             SQLe.printStackTrace();
         }
@@ -88,8 +83,8 @@ public class CategoryDAO implements DAO{
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setInt(1, start);
             ps.setInt(2, count);
-            ResultSet rs = ps.executeQuery(sql);
-            if (rs.next()) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
                 Category category = new Category();
 
                 int id = rs.getInt("id");

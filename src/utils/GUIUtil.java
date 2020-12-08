@@ -38,6 +38,26 @@ public class GUIUtil {
         }
     }
 
+    public static boolean checkPath(JTextField tf, String input) {
+        if (!checkEmpty(tf, input)) {
+            return false;
+        }
+        String path = tf.getText().trim();
+        try {
+            File file = new File(path);
+            if (!file.exists()) {
+                JOptionPane.showMessageDialog(null, input + " 路径不正确");
+                tf.grabFocus();
+                return false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, input + " 路径不正确");
+            tf.grabFocus();
+            return false;
+        }
+        return true;
+    }
+
     // 校验是否为零
     public static boolean checkNotZero(JTextField tf, String input){
         if (!checkEmpty(tf, input)) {

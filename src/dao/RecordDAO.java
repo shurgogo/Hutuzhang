@@ -12,7 +12,7 @@ public class RecordDAO {
     public int getTotal() {
         int total = 0;
 
-        String sql = "select count(*) from config";
+        String sql = "select count(*) from record";
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement()) {
             ResultSet rs = s.executeQuery(sql);
             while (rs.next()) {
@@ -34,11 +34,6 @@ public class RecordDAO {
             ps.setString(3, record.getComment());
             ps.setDate(4, DateUtil.date2sql(record.getDate()));
             ps.execute();
-            ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                int id = rs.getInt(1);
-                record.setId(id);
-            }
         } catch (SQLException SQLe) {
             SQLe.printStackTrace();
         }
@@ -100,8 +95,8 @@ public class RecordDAO {
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setInt(1, start);
             ps.setInt(2, count);
-            ResultSet rs = ps.executeQuery(sql);
-            if (rs.next()) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
                 Record record = new Record();
 
                 int id = rs.getInt("id");
@@ -129,8 +124,8 @@ public class RecordDAO {
         String sql = "select * from record where cid = ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setInt(1, cid);
-            ResultSet rs = ps.executeQuery(sql);
-            if (rs.next()) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
                 Record record = new Record();
 
                 int id = rs.getInt("id");
@@ -157,8 +152,8 @@ public class RecordDAO {
         String sql = "select * from record where date = ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setDate(1, DateUtil.date2sql(DateUtil.today()));
-            ResultSet rs = ps.executeQuery(sql);
-            if (rs.next()) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
                 Record record = new Record();
 
                 int id = rs.getInt("id");
@@ -185,8 +180,8 @@ public class RecordDAO {
         String sql = "select * from record where date = ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setDate(1, DateUtil.date2sql(date));
-            ResultSet rs = ps.executeQuery(sql);
-            if (rs.next()) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
                 Record record = new Record();
 
                 int id = rs.getInt("id");
@@ -218,8 +213,8 @@ public class RecordDAO {
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setDate(1, DateUtil.date2sql(start));
             ps.setDate(2, DateUtil.date2sql(end));
-            ResultSet rs = ps.executeQuery(sql);
-            if (rs.next()) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
                 Record record = new Record();
 
                 int id = rs.getInt("id");
