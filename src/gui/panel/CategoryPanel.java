@@ -1,6 +1,10 @@
 package gui.panel;
 
+import entity.Category;
+import gui.listener.CategoryListener;
+import gui.listener.ConfigListener;
 import gui.model.CategoryTableModel;
+import service.CategoryService;
 import utils.GUIUtil;
 
 import javax.swing.*;
@@ -34,6 +38,34 @@ public class CategoryPanel extends JPanel {
         this.setLayout(new BorderLayout());
         this.add(sp, BorderLayout.CENTER);
         this.add(p, BorderLayout.SOUTH);
+        this.addListener();
+
+    }
+
+    public Category getSelectedCategory() {
+        int index = tCategory.getSelectedRow();
+        return ctModel.cs.get(index);
+    }
+
+    public void updateDate() {
+        ctModel.cs = new CategoryService().list();
+        tCategory.updateUI();
+        tCategory.getSelectionModel().setSelectionInterval(0, 0);
+
+        if (0 == ctModel.cs.size()) {
+            bEdit.setEnabled(false);
+            bDelete.setEnabled(false);
+        } else {
+            bEdit.setEnabled(true);
+            bDelete.setEnabled(true);
+        }
+    }
+
+    private void addListener() {
+        CategoryListener cl = new CategoryListener();
+        bAdd.addActionListener(cl);
+        bEdit.addActionListener(cl);
+        bDelete.addActionListener(cl);
     }
 
     public static void main(String[] args) {
