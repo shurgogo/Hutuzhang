@@ -1,5 +1,7 @@
 package utils;
 
+import gui.panel.WorkingPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -46,6 +48,9 @@ public class CenterPanel extends JPanel {
     }
 
     public void show(JComponent p) {
+        if (p instanceof WorkingPanel) {
+            ((WorkingPanel) p).updateDate();
+        }
         this.c = p;
         Component[] cs = getComponents();
         for (Component c : cs) {

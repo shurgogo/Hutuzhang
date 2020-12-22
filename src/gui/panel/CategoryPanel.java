@@ -10,7 +10,7 @@ import utils.GUIUtil;
 import javax.swing.*;
 import java.awt.*;
 
-public class CategoryPanel extends JPanel {
+public class CategoryPanel extends WorkingPanel {
     static {
         GUIUtil.useLNF();
     }
@@ -61,7 +61,7 @@ public class CategoryPanel extends JPanel {
         }
     }
 
-    private void addListener() {
+    protected void addListener() {
         CategoryListener cl = new CategoryListener();
         bAdd.addActionListener(cl);
         bEdit.addActionListener(cl);

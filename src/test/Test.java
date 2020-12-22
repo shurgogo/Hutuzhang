@@ -1,8 +1,16 @@
 package test;
 
+import dao.ConfigDAO;
+import dao.DAO;
+import entity.Category;
+import entity.Config;
 import utils.GUIUtil;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * @ClassName Test
@@ -11,12 +19,24 @@ import javax.swing.*;
  * @Version 1.0
  */
 public class Test {
+
     public static void main(String[] args) {
-//        GUIUtil.useLNF();
-//        JPanel p = new JPanel();
-//        p.add(new JButton("按钮1"));
-//        p.add(new JButton("按钮2"));
-//        GUIUtil.showPanel(p);
-        System.out.println(System.getProperty("user.dir"));
+        List<Integer> integers = new ArrayList<>();
+        integers.add(1);
+        integers.add(2);
+        integers.add(3);
+        integers.add(4);
+//        Collections.sort(integers, (c2, c1) -> c2-c1);
+        Comparator<Category> c = (c1, c2) -> c1.recordNumber-c2.recordNumber;
+        Collections.sort(integers, new Comparator<Integer>() {
+
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
+            }
+        });
+        System.out.println(integers);
     }
+    Integer i;
+
 }

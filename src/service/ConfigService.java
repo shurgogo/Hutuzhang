@@ -34,9 +34,6 @@ public class ConfigService {
             c.setKey(key);
             c.setValue(value);
             dao.add(c);
-        } else {
-            System.out.println(config.getKey());
-            System.out.println(config.getValue());
         }
     }
 

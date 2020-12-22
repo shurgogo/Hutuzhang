@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Date;
 
-public class RecordPanel extends JPanel {
+public class RecordPanel extends WorkingPanel {
     static {
         GUIUtil.useLNF();
     }
@@ -66,5 +66,15 @@ public class RecordPanel extends JPanel {
 
     public static void main(String[] args) {
         GUIUtil.showPanel(instance);
+    }
+
+    @Override
+    public void updateDate() {
+
+    }
+
+    @Override
+    void addListener() {
+
     }
 }

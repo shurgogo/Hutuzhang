@@ -49,10 +49,10 @@ public class CategoryTableModel implements TableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         if (0 == columnIndex) {
-            return cs.get(rowIndex);
+            return cs.get(rowIndex).getName();
         }
         if (1 == columnIndex) {
-            return 0;
+            return cs.get(rowIndex).getRecordNumber();
         }
         return null;
     }
