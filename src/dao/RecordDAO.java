@@ -31,7 +31,7 @@ public class RecordDAO {
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setInt(1, record.getSpend());
             ps.setInt(2, record.getCid());
-            ps.setString(3, record.getComment());
+            ps.setString(3, record.getRemark());
             ps.setDate(4, DateUtil.date2sql(record.getDate()));
             ps.execute();
         } catch (SQLException SQLe) {
@@ -44,7 +44,7 @@ public class RecordDAO {
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setInt(1, record.getSpend());
             ps.setInt(2, record.getCid());
-            ps.setString(3, record.getComment());
+            ps.setString(3, record.getRemark());
             ps.setDate(4, DateUtil.date2sql(record.getDate()));
             ps.setInt(5, record.getId());
             ps.execute();
@@ -76,7 +76,7 @@ public class RecordDAO {
                 record.setId(id);
                 record.setSpend(spend);
                 record.setCid(cid);
-                record.setComment(comment);
+                record.setRemark(comment);
                 record.setDate(date);
             }
         } catch (SQLException SQLe) {
@@ -108,7 +108,7 @@ public class RecordDAO {
                 record.setId(id);
                 record.setSpend(spend);
                 record.setCid(cid);
-                record.setComment(comment);
+                record.setRemark(comment);
                 record.setDate(date);
 
                 records.add(record);
@@ -136,7 +136,7 @@ public class RecordDAO {
                 record.setId(id);
                 record.setSpend(spend);
                 record.setCid(cid);
-                record.setComment(comment);
+                record.setRemark(comment);
                 record.setDate(date);
 
                 records.add(record);
@@ -164,7 +164,7 @@ public class RecordDAO {
                 record.setId(id);
                 record.setSpend(spend);
                 record.setCid(cid);
-                record.setComment(comment);
+                record.setRemark(comment);
                 record.setDate(DateUtil.today());
 
                 records.add(record);
@@ -192,7 +192,7 @@ public class RecordDAO {
                 record.setId(id);
                 record.setSpend(spend);
                 record.setCid(cid);
-                record.setComment(comment);
+                record.setRemark(comment);
                 record.setDate(date);
 
                 records.add(record);
@@ -226,7 +226,7 @@ public class RecordDAO {
                 record.setId(id);
                 record.setSpend(spend);
                 record.setCid(cid);
-                record.setComment(comment);
+                record.setRemark(comment);
                 record.setDate(date);
 
                 records.add(record);

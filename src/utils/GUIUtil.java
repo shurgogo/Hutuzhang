@@ -66,7 +66,7 @@ public class GUIUtil {
         String text = tf.getText().trim();
         if (checkNumber(tf, text)) {
             if (0 == Integer.parseInt(text)) {
-                JOptionPane.showMessageDialog(null, input + " 不能为零");
+                JOptionPane.showMessageDialog(null, input + "不能为零");
                 tf.grabFocus();
                 return false;
             }

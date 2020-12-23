@@ -6,7 +6,7 @@ public class Record {
     public int id;
     public int spend;
     public int cid;
-    public String comment;
+    public String remark;
     public Date date;
 
     public int getId() {
@@ -33,12 +33,12 @@ public class Record {
         this.cid = cid;
     }
 
-    public String getComment() {
-        return comment;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public Date getDate() {

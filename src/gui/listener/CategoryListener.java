@@ -24,8 +24,8 @@ public class CategoryListener implements ActionListener {
 
         if (b == p.bEdit) {
             Category category = p.getSelectedCategory();
-            int id = category.id;
-            String name = JOptionPane.showInputDialog("修改分类名称", category.name);
+            int id = category.getId();
+            String name = JOptionPane.showInputDialog("修改分类名称", category.getName());
             if (0 == name.length()) {
                 JOptionPane.showMessageDialog(p, "分类名称不能为空");
                 return;
@@ -42,7 +42,7 @@ public class CategoryListener implements ActionListener {
             if (JOptionPane.OK_OPTION != JOptionPane.showConfirmDialog(p, "确认删除？")) {
                 return;
             }
-            int id = category.id;
+            int id = category.getId();
             new CategoryService().delete(id);
         }
 

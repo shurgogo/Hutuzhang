@@ -1,7 +1,10 @@
 package gui.panel;
 
+import entity.Category;
+import gui.listener.RecordListener;
 import gui.model.CategoryComboBoxModel;
 import org.jdesktop.swingx.JXDatePicker;
+import service.CategoryService;
 import utils.ColorUtil;
 import utils.GUIUtil;
 
@@ -23,7 +26,7 @@ public class RecordPanel extends WorkingPanel {
 
     public JTextField tfSpend = new JTextField("0");
     public CategoryComboBoxModel cbModel = new CategoryComboBoxModel();
-    public JComboBox<String> cbCategory = new JComboBox<String>(cbModel);
+    public JComboBox<Category> cbCategory = new JComboBox<Category>(cbModel);
     public JTextField tfRemark = new JTextField();
     public JXDatePicker dpDate = new JXDatePicker(new Date());
 
@@ -36,6 +39,8 @@ public class RecordPanel extends WorkingPanel {
         this.setLayout(new BorderLayout());
         this.add(center(), BorderLayout.NORTH);
         this.add(south(), BorderLayout.SOUTH);
+
+        addListener();
     }
 
 
@@ -70,11 +75,28 @@ public class RecordPanel extends WorkingPanel {
 
     @Override
     public void updateDate() {
+        cbModel.cs = new CategoryService().list();
+        cbCategory.updateUI();
+        resetInput();
+        tfSpend.grabFocus();
+    }
 
+    public void resetInput() {
+        tfSpend.setText("0");
+        tfRemark.setText("");
+        if (0 != cbModel.cs.size()) {
+            cbCategory.setSelectedIndex(0);
+        }
+        dpDate.setDate(new Date());
     }
 
     @Override
     void addListener() {
+        RecordListener rl = new RecordListener();
+        bRecord.addActionListener(rl);
+    }
 
+    public Category getSelectedCategory() {
+        return (Category) cbModel.getSelectedItem();
     }
 }

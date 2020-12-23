@@ -1,7 +1,7 @@
 package entity;
 
 public class Category {
-    public int id;
+    private int id;
     public String name;
     public int recordNumber;
 
@@ -27,5 +27,10 @@ public class Category {
 
     public void setRecordNumber(int recordNumber) {
         this.recordNumber = recordNumber;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }
