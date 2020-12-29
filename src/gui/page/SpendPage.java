@@ -22,14 +22,14 @@ public class SpendPage {
     }
 
     public SpendPage(int monthSpend, int todaySpend, int avgSpendPerDay, int monthLeft, int dayAvgAvailable, int monthLeftDay, int percent) {
-        this.monthSpend = "￥" + String.valueOf(monthSpend);
-        this.todaySpend = "￥" + String.valueOf(todaySpend);
-        this.avgSpendPerDay = "￥" + String.valueOf(avgSpendPerDay);
-        this.monthLeft = "￥" + String.valueOf(monthLeft);
-        this.dayAvgAvailable = "￥" + String.valueOf(dayAvgAvailable);
-        this.monthLeftDay = String.valueOf(monthLeftDay) + "天";
-        this.percent = percent;
         this.overSpend = monthLeft < 0;
+        this.monthSpend = "￥" + monthSpend;
+        this.todaySpend = "￥" + todaySpend;
+        this.avgSpendPerDay = "￥" + avgSpendPerDay;
+        this.monthLeft = overSpend ? "超支" + Math.abs(monthLeft) : "￥" + monthLeft;
+        this.dayAvgAvailable = "￥" + dayAvgAvailable;
+        this.monthLeftDay = monthLeftDay + "天";
+        this.percent = percent;
     }
 
     public String getMonthSpend() {
