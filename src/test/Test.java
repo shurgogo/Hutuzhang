@@ -20,6 +20,13 @@ import java.util.List;
  */
 public class Test {
 
+    public void print() {
+        print2();
+    }
+    public void print2() {
+        System.out.println("父类方法2");
+    }
+
     public static void main(String[] args) {
         List<Integer> integers = new ArrayList<>();
         integers.add(1);
