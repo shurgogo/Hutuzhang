@@ -12,7 +12,7 @@ public class ColorUtil {
     public static Color blue = Color.decode("#3399FF");
     public static Color gray = Color.decode("#999999");
     public static Color background = Color.decode("#eeeeee");
-    public static Color varning = Color.decode("#FF3333");
+    public static Color warning = Color.decode("#FF3333");
 
     public static Color getByPercentage(int per) {
         if (per > 100) {

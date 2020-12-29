@@ -7,6 +7,8 @@ package gui.panel;
  * @Version 1.0
  */
 
+import gui.page.SpendPage;
+import service.SpendService;
 import utils.CircleProgressBar;
 import utils.ColorUtil;
 import utils.GUIUtil;
@@ -15,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.*;
 
-public class SpendPanel extends JPanel {
+public class SpendPanel extends WorkingPanel {
     static {
         GUIUtil.useLNF();
     }
@@ -104,5 +106,32 @@ public class SpendPanel extends JPanel {
 
     public static void main(String[] args) {
         GUIUtil.showPanel(instance);
+    }
+
+    @Override
+    public void updateDate() {
+        SpendPage spendPage = new SpendService().getSpendPage();
+        vMonthSpend.setText(spendPage.getMonthSpend());
+        vTodaySpend.setText(spendPage.getTodaySpend());
+        vAvgSpendPerDay.setText(spendPage.getAvgSpendPerDay());
+        vMonthLeft.setText(spendPage.getMonthLeft());
+        vDayAvgAvailable.setText(spendPage.getDayAvgAvailable());
+        vMonthLeftDay.setText(spendPage.getMonthLeftDay());
+        cpb.setProgress(spendPage.getPercent());
+        if (spendPage.isOverSpend()) {
+            vMonthLeft.setForeground(ColorUtil.warning);
+            vMonthSpend.setForeground(ColorUtil.warning);
+            vTodaySpend.setForeground(ColorUtil.warning);
+        } else {
+            vMonthLeft.setForeground(ColorUtil.gray);
+            vMonthSpend.setForeground(ColorUtil.blue);
+            vTodaySpend.setForeground(ColorUtil.blue);
+        }
+        cpb.setForegroundColor(ColorUtil.getByPercentage(spendPage.getPercent()));
+    }
+
+    @Override
+    void addListener() {
+
     }
 }
