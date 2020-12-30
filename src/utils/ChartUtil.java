@@ -10,47 +10,11 @@ import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer3D;
-import org.jfree.chart.title.LegendTitle;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.ui.RectangleAnchor;
 import service.ReportService;
 
-/**
- * @ClassName ChartUtil
- * @Author Joshua
- * @Date 2020/11/23
- * @Version 1.0
- */
 public class ChartUtil {
-    public static int max(double[] sampleValues) {
-        int max = 0;
-        for (double v : sampleValues) {
-            if ((int) v > max) {
-                max = (int) v;
-            }
-        }
-        return max;
-    }
-
-    private static String[] sampleLabels() {
-        String[] sampleLabels = new String[30];
-        for (int i = 0; i < sampleLabels.length; i++) {
-            if (0 == i % 5) {
-                sampleLabels[i] = String.valueOf(i + 1 + "日");
-            }
-        }
-        return sampleLabels;
-    }
-
-    private static double[] sampleValues() {
-        double[] result = new double[30];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = (int) (Math.random() * 300);
-        }
-        return result;
-    }
-
     public static JFreeChart getBarChart() {
         CategoryDataset dataset = setBarDataset();
         JFreeChart chart = ChartFactory.createBarChart3D(
