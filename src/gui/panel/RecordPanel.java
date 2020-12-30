@@ -74,7 +74,7 @@ public class RecordPanel extends WorkingPanel {
     }
 
     @Override
-    public void updateDate() {
+    public void updateData() {
         cbModel.cs = new CategoryService().list();
         cbCategory.updateUI();
         resetInput();

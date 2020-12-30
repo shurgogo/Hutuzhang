@@ -47,7 +47,7 @@ public class CategoryPanel extends WorkingPanel {
         return ctModel.cs.get(index);
     }
 
-    public void updateDate() {
+    public void updateData() {
         ctModel.cs = new CategoryService().list();
         tCategory.updateUI();
         tCategory.getSelectionModel().setSelectionInterval(0, 0);

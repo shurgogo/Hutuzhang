@@ -27,6 +27,10 @@ public class RecordListener implements ActionListener {
             return;
         }
 
+        if (!GUIUtil.checkNotNegative(rp.tfSpend, "花费金额")) {
+            return;
+        }
+
         int spend = Integer.parseInt(rp.tfSpend.getText());
         String remark = rp.tfRemark.getText();
         Date date = rp.dpDate.getDate();

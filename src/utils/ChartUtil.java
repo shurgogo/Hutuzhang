@@ -1,7 +1,9 @@
 package utils;
 
 import java.awt.*;
+import java.util.List;
 
+import entity.Record;
 import org.jfree.chart.*;
 import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.ValueAxis;
@@ -12,6 +14,7 @@ import org.jfree.chart.title.LegendTitle;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.RectangleAnchor;
+import service.ReportService;
 
 /**
  * @ClassName ChartUtil
@@ -74,13 +77,19 @@ public class ChartUtil {
         return chart;
     }
 
-    private static CategoryDataset setBarDataset() {
+
+    public static CategoryDataset setBarDataset() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(100, "月消费报表", "1");
-        dataset.addValue(200, "月消费报表", "2");
-        dataset.addValue(300, "月消费报表", "3");
-        dataset.addValue(400, "月消费报表", "4");
-        dataset.addValue(500, "月消费报表", "5");
+        List<Record> thisMonthRecords = new ReportService().listThisMonthRecords();
+        int gapSpend = 0;
+        final int GAP = 5;
+        for (int i = 0; i < thisMonthRecords.size(); i++) {
+            gapSpend += thisMonthRecords.get(i).getSpend();
+            if ((i + 1) % GAP == 0) {
+                dataset.addValue(gapSpend, "", (i + 1) + "日");
+                gapSpend = 0;
+            }
+        }
         return dataset;
     }
 }

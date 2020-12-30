@@ -76,6 +76,25 @@ public class GUIUtil {
         return true;
     }
 
+    // 校验是否为零
+    public static boolean checkNotNegative(JTextField tf, String input){
+        if (!checkEmpty(tf, input)) {
+            return false;
+        }
+        String text = tf.getText().trim();
+        if (checkNumber(tf, text)) {
+            if (0 > Integer.parseInt(text)) {
+                JOptionPane.showMessageDialog(null, input + "不能为负");
+                tf.grabFocus();
+                return false;
+            }
+        } else {
+            return false;
+        }
+        return true;
+    }
+
+
     // 给组件（们）设置相同颜色
     public static void setColor(Color color, JComponent... cs) {
         for (JComponent c: cs) {

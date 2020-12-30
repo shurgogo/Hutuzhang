@@ -46,6 +46,6 @@ public class CategoryListener implements ActionListener {
             new CategoryService().delete(id);
         }
 
-        p.updateDate();
+        p.updateData();
     }
 }

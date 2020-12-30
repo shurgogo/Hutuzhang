@@ -4,6 +4,8 @@ import gui.panel.WorkingPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * @ClassName CenterPanel
@@ -48,9 +50,19 @@ public class CenterPanel extends JPanel {
     }
 
     public void show(JComponent p) {
-        if (p instanceof WorkingPanel) {
-            ((WorkingPanel) p).updateDate();
+        Class clazz = p.getClass();
+        try {
+            Method method = clazz.getDeclaredMethod("updateData", null);
+            method.invoke(p);
+        } catch (NoSuchMethodException e) {
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
         }
+//        if (p instanceof WorkingPanel) {
+//            ((WorkingPanel) p).updateDate();
+//        }
         this.c = p;
         Component[] cs = getComponents();
         for (Component c : cs) {

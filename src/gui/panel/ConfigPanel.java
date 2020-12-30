@@ -57,7 +57,7 @@ public class ConfigPanel extends WorkingPanel {
     }
 
     @Override
-    public void updateDate() {
+    public void updateData() {
         ConfigService cs = new ConfigService();
         String budget = cs.get(ConfigService.getBudget());
         String mysqlPath = cs.get(ConfigService.getMysqlPath());

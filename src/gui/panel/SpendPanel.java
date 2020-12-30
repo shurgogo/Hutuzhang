@@ -109,7 +109,7 @@ public class SpendPanel extends WorkingPanel {
     }
 
     @Override
-    public void updateDate() {
+    public void updateData() {
         SpendPage spendPage = new SpendService().getSpendPage();
         vMonthSpend.setText(spendPage.getMonthSpend());
         vTodaySpend.setText(spendPage.getTodaySpend());
